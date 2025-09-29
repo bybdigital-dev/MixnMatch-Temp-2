@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useMutation } from '@tanstack/react-query';
+import { apiRequest } from '@/lib/queryClient';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -46,20 +48,35 @@ export default function Contact() {
     }
   });
 
+  const submitMutation = useMutation({
+    mutationFn: async (data: ContactForm) => {
+      return apiRequest('POST', '/api/contact', {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        suburb: data.suburb,
+        services: selectedServices,
+        message: data.message,
+      });
+    },
+    onSuccess: () => {
+      setIsSubmitted(true);
+      reset();
+      setSelectedServices([]);
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    },
+    onError: (error) => {
+      console.error('Error submitting form:', error);
+      // TODO: Show error message to user
+    }
+  });
+
   const onSubmit = async (data: ContactForm) => {
-    console.log('Form submitted:', data); // todo: remove mock functionality
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitted(true);
-    reset();
-    setSelectedServices([]);
-    
-    // Hide success message after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 5000);
+    submitMutation.mutate(data);
   };
 
   const handleServiceChange = (service: string, checked: boolean) => {
@@ -270,11 +287,11 @@ export default function Contact() {
                     <Button
                       type="submit"
                       size="lg"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting || submitMutation.isPending}
                       className="w-full"
                       data-testid="button-submit"
                     >
-                      {isSubmitting ? 'Sending...' : 'Send Enquiry'}
+                      {isSubmitting || submitMutation.isPending ? 'Sending...' : 'Send Enquiry'}
                     </Button>
                   </form>
                 )}
