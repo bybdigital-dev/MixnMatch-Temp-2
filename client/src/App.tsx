@@ -1,5 +1,3 @@
-import { Router as WouterRouter, Switch, Route } from "wouter";
-import { useHashLocation } from "wouter/use-hash-location";
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
