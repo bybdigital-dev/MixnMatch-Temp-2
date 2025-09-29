@@ -1,0 +1,71 @@
+Build a fast, responsive, static single-page website (files: index.html, styles.css, script.js) for a home-textiles business.
+
+Business
+
+Name: [BUSINESS NAME]
+
+Tagline: “Beautiful textiles, expertly fitted.”
+
+In business 18 years, trusted and cemented in the community of [CITY/AREA, COUNTRY].
+
+Specialities: Curtains & Blinds, Upholstery, Fabrics, Bedding, Sheets & Linen, Knitting & Crochet Yarns, Wool.
+
+Contact: [PHONE] • [EMAIL] • [ADDRESS] • [WHATSAPP LINK] (click-to-call/WhatsApp).
+
+Design
+
+Warm, modern, homey.
+
+Colours: cream (#F7F4EE), charcoal (#2D2D2D), forest green (#2F5D50), soft gold (#C1A25A).
+
+Fonts: headings serif (e.g., Playfair Display), body sans (e.g., Inter).
+
+Lightweight, no frameworks. Clean semantic HTML.
+
+Sections (one page)
+
+Header (sticky): Logo/brand left, nav links (Home, Services, Gallery, About, FAQs, Contact), Book Free Quote button.
+
+Hero: H1 “Curtains, Blinds & Textiles for Every Home.” Subtext: “18 years of craftsmanship and care in [CITY].” Buttons: Book a Free Quote (scroll to Contact) and Explore Services (scroll to Services). Background image with accessible alt text.
+
+Services (cards with icons/images + short blurbs):
+
+Curtains & Blinds (S-fold, eyelet, roller, Roman, Venetian, blackout)
+
+Upholstery (re-covers, repairs, fabric selection)
+
+Fabrics (linen, cotton, outdoor, blackout linings)
+
+Bedding, Sheets & Linen (duvets, fitted sheets, pillowcases; size guide)
+
+Yarns & Wool (knitting/crochet; fibre types, weights, hook/needle guide)
+
+Why Choose Us (3 highlights): Made-to-Measure • Professional Installation • Community-Trusted for 18 Years.
+
+Gallery: 8–12 images (grid, lightbox). Include alt text like “Pinch-pleat linen curtains in living room, Sand”.
+
+Testimonials: 3–5 short quotes (Name + Suburb).
+
+About: Brief story; “Local, family-run; committed to quality, service, and community.” Mention service areas.
+
+FAQs (accordion): lead times, measuring/quotes, installation, fabric care, returns on cut fabrics/yarns, payments.
+
+Contact / Free Measure & Quote: Simple form (Name, Phone, Email, Suburb, Service Needed [multi-select], Message, optional photo upload). Show success message. Include address, hours, embedded map, and WhatsApp quick-link.
+
+Functionality (JS)
+
+Smooth scroll for nav links and buttons.
+
+Basic client-side form validation with clear error/success messages (no backend).
+
+Simple lightbox for Gallery (vanilla JS).
+
+Sticky header shadow on scroll.
+
+Accessibility
+
+WCAG AA contrast, semantic landmarks, one H1, labelled form fields, focus outlines, skip-to-content link, alt text on all images.
+
+Performance
+
+Lazy-load images, responsive <img> sizes, preload primary font, minified CSS/JS.
