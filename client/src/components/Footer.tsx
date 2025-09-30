@@ -131,6 +131,22 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground">
               © {currentYear} Beautiful Textiles. All rights reserved.
             </p>
+
+
+
+
+            
+            <p className="text-sm text-muted-foreground">
+              Developed by{" "}
+              <a
+                href="https://buildyourbrand.web.za/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                BYB Digital
+              </a>
+            </p>
             
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
               <button 
