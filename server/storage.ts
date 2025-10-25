@@ -1,6 +1,5 @@
-import { users, contactInquiries, type User, type InsertUser, type ContactInquiry, type InsertContactInquiry } from "@shared/schema";
-import { db } from "./db";
-import { eq, desc } from "drizzle-orm";
+import { type User, type InsertUser, type ContactInquiry, type InsertContactInquiry } from "@shared/schema";
+import { randomUUID } from "crypto";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -18,61 +17,59 @@ export interface IStorage {
   updateContactInquiryStatus(id: string, status: string): Promise<ContactInquiry | undefined>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class MemStorage implements IStorage {
+  private users: User[] = [];
+  private contactInquiries: ContactInquiry[] = [];
+
   // User methods
   async getUser(id: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user || undefined;
+    return this.users.find(u => u.id === id);
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.username, username));
-    return user || undefined;
+    return this.users.find(u => u.username === username);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const [user] = await db
-      .insert(users)
-      .values(insertUser)
-      .returning();
+    const user: User = {
+      id: randomUUID(),
+      ...insertUser,
+    };
+    this.users.push(user);
     return user;
   }
 
   // Contact inquiry methods
   async createContactInquiry(inquiry: InsertContactInquiry): Promise<ContactInquiry> {
-    const [contactInquiry] = await db
-      .insert(contactInquiries)
-      .values(inquiry)
-      .returning();
+    const contactInquiry: ContactInquiry = {
+      id: randomUUID(),
+      ...inquiry,
+      status: 'new',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+    this.contactInquiries.push(contactInquiry);
     return contactInquiry;
   }
 
   async getContactInquiries(): Promise<ContactInquiry[]> {
-    return await db
-      .select()
-      .from(contactInquiries)
-      .orderBy(desc(contactInquiries.createdAt));
+    return [...this.contactInquiries].sort((a, b) => 
+      b.createdAt.getTime() - a.createdAt.getTime()
+    );
   }
 
   async getContactInquiry(id: string): Promise<ContactInquiry | undefined> {
-    const [inquiry] = await db
-      .select()
-      .from(contactInquiries)
-      .where(eq(contactInquiries.id, id));
-    return inquiry || undefined;
+    return this.contactInquiries.find(i => i.id === id);
   }
 
   async updateContactInquiryStatus(id: string, status: string): Promise<ContactInquiry | undefined> {
-    const [inquiry] = await db
-      .update(contactInquiries)
-      .set({ 
-        status, 
-        updatedAt: new Date() 
-      })
-      .where(eq(contactInquiries.id, id))
-      .returning();
-    return inquiry || undefined;
+    const inquiry = this.contactInquiries.find(i => i.id === id);
+    if (inquiry) {
+      inquiry.status = status as any;
+      inquiry.updatedAt = new Date();
+    }
+    return inquiry;
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();
