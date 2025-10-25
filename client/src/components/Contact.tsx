@@ -268,21 +268,7 @@ export default function Contact() {
                       )}
                     </div>
 
-                    <div>
-                      <Label htmlFor="photo">Photos (Optional)</Label>
-                      <Input
-                        id="photo"
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        {...register('photo')}
-                        className="mt-1"
-                        data-testid="input-photo"
-                      />
-                      <p className="text-xs text-muted-foreground mt-1">
-                        Share photos of your space to help us understand your needs better
-                      </p>
-                    </div>
+
 
                     <Button
                       type="submit"
