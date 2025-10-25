@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a modern, full-stack web application for a home textiles business specializing in curtains, blinds, upholstery, fabrics, bedding, and yarns. The application features a customer-facing single-page website with service listings, gallery, testimonials, and contact forms, plus an admin dashboard for managing customer inquiries. Built with React, Express.js, and PostgreSQL, it emphasizes warm, homey design aesthetics with professional functionality.
+This is a modern, full-stack web application for a home textiles business specializing in curtains, blinds, upholstery, fabrics, bedding, and yarns. The application features a customer-facing single-page website with service listings, gallery, testimonials, and contact forms, plus an admin dashboard for managing customer inquiries. Built with React, Express.js, and in-memory storage, it emphasizes warm, homey design aesthetics with professional functionality.
 
 ## User Preferences
 
@@ -20,14 +20,14 @@ Preferred communication style: Simple, everyday language.
 
 ### Backend Architecture
 - **Framework**: Express.js with TypeScript for API endpoints
-- **Database Integration**: Drizzle ORM with connection to Neon PostgreSQL database
+- **Storage**: In-memory storage for contact inquiries and user data
 - **API Design**: RESTful endpoints for contact inquiries with proper validation using Zod schemas
 - **Development Tools**: Hot module replacement via Vite integration for seamless development experience
 
-### Database Schema
-- **Contact Inquiries Table**: Stores customer inquiries with fields for name, email, phone, suburb, services array, message, status tracking, and timestamps
-- **Users Table**: Basic user structure for future admin authentication (currently unused)
-- **Migration System**: Drizzle Kit for database schema management and migrations
+### Data Storage
+- **Contact Inquiries**: Stored in memory with fields for name, email, phone, suburb, services array, message, status tracking, and timestamps
+- **Users**: Basic user structure for future admin authentication (currently unused)
+- **Note**: Data is stored in memory and will be reset when the application restarts
 
 ### Key Features
 - **Single Page Application**: Complete business website with hero, services, gallery, testimonials, about, FAQ, and contact sections
@@ -50,10 +50,9 @@ Preferred communication style: Simple, everyday language.
 - **UI Framework**: Tailwind CSS with shadcn/ui components
 - **Backend**: Express.js, Node.js
 
-### Database & ORM
-- **Database**: Neon PostgreSQL (serverless)
-- **ORM**: Drizzle ORM with Drizzle Kit for migrations
-- **Connection**: @neondatabase/serverless with WebSocket support
+### Data Storage
+- **Storage**: In-memory storage using simple TypeScript arrays
+- **Validation**: Zod for schema validation and type safety
 
 ### UI Components & Icons
 - **Component Library**: Radix UI primitives (dialog, accordion, dropdown, etc.)
