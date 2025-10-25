@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Scissors, Palette, Shirt, Bed, Volleyball } from 'lucide-react';
+import curtainsImage from '@assets/stock_images/elegant_modern_curta_437781d0.jpg';
 import upholsteryImage from '@assets/generated_images/Upholstery_service_image_126fd690.png';
 import fabricImage from '@assets/generated_images/Fabric_samples_display_5a09e29f.png';
 import beddingImage from '@assets/generated_images/Bedding_and_linen_service_516d13ae.png';
@@ -12,7 +13,7 @@ const services = [
     title: 'Curtains & Blinds',
     description: 'S-fold, eyelet, roller, Roman, Venetian, and blackout options. Custom-fitted for perfect style and function.',
     features: ['S-fold & Eyelet Curtains', 'Roman & Roller Blinds', 'Venetian Blinds', 'Blackout Solutions'],
-    image: null // First service failed to generate
+    image: curtainsImage
   },
   {
     icon: Shirt,
