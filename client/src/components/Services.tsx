@@ -2,9 +2,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Scissors, Palette, Shirt, Bed, Volleyball } from 'lucide-react';
 import curtainsImage from '@assets/stock_images/elegant_modern_curta_437781d0.jpg';
-import upholsteryImage from '@assets/generated_images/Upholstery_service_image_126fd690.png';
-import fabricImage from '@assets/generated_images/Fabric_samples_display_5a09e29f.png';
-import beddingImage from '@assets/generated_images/Bedding_and_linen_service_516d13ae.png';
+import upholsteryImage from '@assets/generated_images/Pillows.jpeg';
+import fabricImage from '@assets/generated_images/Upholdery.jpeg';
+import beddingImage from '@assets/generated_images/Bedding.jpeg';
 import yarnImage from '@assets/generated_images/Yarn_and_wool_collection_81cd9e0d.png';
 
 const services = [
